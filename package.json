@@ -1,0 +1,24 @@
+{
+  "name": "mediaflow",
+  "version": "0.0.1",
+  "description": "Mediaflow client",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "build": "browserify index.js > mediaflow.browser.js"
+  },
+  "keywords": [
+    "mediaflow",
+    "media",
+    "api"
+  ],
+  "author": "Raymond Julin <raymond.julin@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "native-promise-only": "~0.4.1-g"
+  },
+  "devDependencies": {
+    "mocha": "~1.20.1",
+    "chai": "~1.9.1"
+  }
+}
