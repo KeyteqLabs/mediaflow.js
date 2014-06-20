@@ -3,15 +3,7 @@ require('native-promise-only')
 var querystring = require('querystring')
 
 var getJSON = require('src/getJSON')
-
-var compactObject = function(o) {
-    var copy = {}
-    for (var k in o) {
-        if (o[k] !== '' && o[k] !== null && typeof v === 'undefined')
-            copy[k] = o[k]
-    }
-    return copy
-}
+var compactObject = require('src/compactObject')
 
 var Mediaflow = function(host) {
     if (typeof host !== 'string') {
@@ -20,7 +12,7 @@ var Mediaflow = function(host) {
     this.host = host
 }
 
-Mediaflow.prototype.getURL = function(url, opts) {
+Mediaflow.prototype.url = function(url, opts) {
     var url = 'http://' + this.host + url
     var query = querystring.stringify(compactObject(opts))
     if (query) url += '?' + query
@@ -35,19 +27,14 @@ Mediaflow.prototype.auth = function(username, key) {
 
 Mediaflow.prototype.media = function(id, callback) {
     // Fetch media
-    var url = this.getURL('/media/' + id + '.json')
-
-    getJSON(url, function(err, data) {
-        callback(err, data ? data.media : data)
+    getJSON(this.url('/media/' + id + '.json'), function(err, data) {
+        callback(err, data ? data.media : err)
     })
 }
 
 Mediaflow.prototype.search = function(query, callback) {
-    var url = this.getURL('/media.json', {
-        q: query
-    })
-
-    getJSON(url, callback)
+    var args = {q: query}
+    getJSON(this.url('/media.json', args), callback)
 }
 
 module.exports = Mediaflow
