@@ -7,6 +7,7 @@
     "test": "mocha",
     "build": "browserify index.js > mediaflow.browser.js"
   },
+  "bin": "./cli.js",
   "keywords": [
     "mediaflow",
     "media",
@@ -15,7 +16,9 @@
   "author": "Raymond Julin <raymond.julin@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "native-promise-only": "~0.4.1-g"
+    "native-promise-only": "~0.4.1-g",
+    "minimist": "~0.2.0",
+    "prettyjson": "~1.0.0"
   },
   "devDependencies": {
     "mocha": "~1.20.1",
