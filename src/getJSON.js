@@ -2,8 +2,8 @@ var http = require('http')
 
 var noop = function() {}
 
-module.exports = function getJSON(url, cb) {
-    return http.get(url, function(res) {
+module.exports = function getJSON(options, cb) {
+    return http.get(options, function(res) {
         if (res.statusCode !== 200) {
             return cb(http.STATUS_CODES[''+res.statusCode])
         }

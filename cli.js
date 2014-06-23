@@ -8,6 +8,10 @@ var cmd = args.shift()
 
 var mf = new Mediaflow(host)
 
+if (argv.username && argv.key) {
+    mf.auth(argv.username, argv.key)
+}
+
 var output = function(data) {
     console.log(prettyjson.render(data));
 }
