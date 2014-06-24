@@ -2,25 +2,9 @@ require('native-promise-only')
 
 var querystring = require('querystring')
 
-var getJSON = require('src/getJSON')
-var compactObject = require('src/compactObject')
-
-var crypto = require('crypto')
-
-var sign = function(args, apiKey)  {
-    message = Object.keys(args)
-        .filter(function(key) {
-            return args[key] !== '@' && typeof args[key] !== 'object'
-        })
-        .map(function(key) { return key + args[key] })
-        .join('')
-
-    var hmac = crypto.createHmac('sha1', apiKey)
-    hmac.setEncoding('hex')
-    hmac.write(message)
-    hmac.end()
-    return hmac.read()
-}
+var getJSON = require('./src/getJSON')
+var compactObject = require('./src/compactObject')
+var sign = require('./src/signature')
 
 var Mediaflow = function(host) {
     if (typeof host !== 'string') {

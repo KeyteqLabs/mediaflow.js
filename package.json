@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "build": "browserify index.js > mediaflow.browser.js"
+    "build": "browserify --standalone Mediaflow index.js > mediaflow.browser.js",
+    "uglify": "uglifyjs mediaflow.browser.js -c -m > mediaflow.browser.min.js",
+    "dist": "npm run build && npm run uglify"
   },
   "bin": "./cli.js",
   "keywords": [
