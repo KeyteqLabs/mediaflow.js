@@ -1,8 +1,11 @@
-module.exports = function(o) {
-    var copy = {}
+var defaultTest = function(k, v) {
+    return v !== '' && v !== null && typeof v !== 'undefined'
+}
+module.exports = function(o, test, copy) {
+    copy = copy || {}
+    test = test || defaultTest
     for (var k in o) {
-        if (o[k] !== '' && o[k] !== null && typeof v === 'undefined')
-            copy[k] = o[k]
+        if (test(k, o[k])) copy[k] = o[k]
     }
     return copy
 }

@@ -20,11 +20,12 @@
   "dependencies": {
     "native-promise-only": "~0.4.1-g",
     "minimist": "~0.2.0",
-    "prettyjson": "~1.0.0"
+    "form-data": "~0.1.4"
   },
   "devDependencies": {
     "mocha": "~1.20.1",
     "chai": "~1.9.1",
-    "nock": "~0.36.2"
+    "nock": "~0.36.2",
+    "prettyjson": "~1.0.0"
   }
 }
