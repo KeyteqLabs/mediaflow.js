@@ -29,7 +29,7 @@ mf.media(mediaId, callback)
 * [x] Search medias
 * [x] Signed requests as well as anonymous
 * [x] Upload support
+* [x] Set up Travis-CI
 * [ ] Set up tests to run in browser environments
 * [ ] Promises based API
-* [ ] Set up Travis-CI
 * [ ] Investigate providing as package for everything: npm + bower + amd + ES6
