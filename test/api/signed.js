@@ -1,9 +1,9 @@
 var expect = require('chai').expect
 var nock = require('nock');
 var http = require('http');
-var Mediaflow = require('index')
 
-var mediaDefinition = require('mocks/media')
+var Mediaflow = require('../..')
+var mediaDefinition = require('../../mocks/media')
 
 var host = 'foo.mediaflowapp.com'
 

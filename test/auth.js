@@ -1,5 +1,5 @@
 var expect = require('chai').expect
-var Mediaflow = require('index')
+var Mediaflow = require('..')
 
 describe('auth', function() {
     var host = 'foo.mediaflowapp.com'

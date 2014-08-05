@@ -1,5 +1,5 @@
 var expect = require('chai').expect
-var Mediaflow = require('index')
+var Mediaflow = require('./..')
 
 describe('constructor', function() {
     var fn = function(host) { return new Mediaflow(host) }
