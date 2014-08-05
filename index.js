@@ -1,10 +1,16 @@
 require('native-promise-only')
 
 var querystring = require('querystring')
+var nodeify = require('nodeify')
 
 var http = require('./src/http')
 var compactObject = require('./src/compactObject')
 var sign = require('./src/signature')
+
+var FD = require("form-data")
+if (typeof FormData === 'undefined' && FD) {
+    FormData = FD
+}
 
 var Mediaflow = function(host) {
     if (typeof host !== 'string') {
@@ -42,10 +48,13 @@ Mediaflow.prototype.auth = function(username, key) {
 }
 
 Mediaflow.prototype.media = function(id, callback) {
-    // Fetch media
-    http.getJSON(this.url('GET', '/media/' + id + '.json'), function(err, data) {
-        callback(err, data ? data.media : err)
+    var url = this.url('GET', '/media/' + id + '.json')
+    var p = new Promise(function(resolve,reject){
+        http.getJSON(url, function(err, data) {
+            return err ? reject(err) : resolve(data.media)
+        })
     })
+    return nodeify(p, callback)
 }
 
 Mediaflow.prototype.upload = function(file, options, callback) {
@@ -59,14 +68,22 @@ Mediaflow.prototype.upload = function(file, options, callback) {
         formData.append(key, options[key])
     }
     var url = this.url('POST', '/media.json', options)
-    http.postJSON(url, formData, function(err, data) {
-        callback(err, data ? data.media : err)
+    var p = new Promise(function(resolve, reject) {
+        http.postJSON(url, formData, function(err, data) {
+            return err ? reject(err) : resolve(data.media)
+        })
     })
+    return nodeify(p, callback)
 }
 
 Mediaflow.prototype.search = function(query, callback) {
-    var args = {q: query}
-    http.getJSON(this.url('GET', '/media.json', args), callback)
+    var url = this.url('GET', '/media.json', {q: query})
+    var p = new Promise(function(resolve, reject) {
+        http.getJSON(url, function(err, data) {
+            return err ? reject(err) : resolve(data)
+        })
+    })
+    return nodeify(p, callback)
 }
 
 module.exports = Mediaflow

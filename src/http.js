@@ -1,11 +1,6 @@
 var http = require('http')
 var compactObject = require('./compactObject')
 
-var FD = require("form-data")
-if (typeof FormData === 'undefined') {
-    FormData = FD
-}
-
 var noop = function() {}
 
 var handleResponse = function(res, cb) {
