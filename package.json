@@ -1,6 +1,6 @@
 {
   "name": "mediaflow",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Mediaflow client",
   "main": "index.js",
   "scripts": {
