@@ -1,4 +1,5 @@
 # Mediaflow.js
+[![Build Status](https://travis-ci.org/KeyteqLabs/mediaflow.js.svg?branch=master)](https://travis-ci.org/KeyteqLabs/mediaflow.js)
 
 Mediaflow Node + Browser JavaScript implementation
 
