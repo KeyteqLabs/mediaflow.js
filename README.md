@@ -16,6 +16,11 @@ mf.search('foobar').then(function(data) {
 
 // Upload media in Node.js
 // Requires `auth` to be called prior
+// When passing a readstream you also need to specify
+// a name of your file!
+var options = {
+    name: 'image.jpg'
+}
 mf.upload(fs.createReadStream(filepath), options)
 .then(function(media) {
   console.log('Media successfully uploaded', media)
