@@ -11,7 +11,7 @@ var mf = new Mediaflow('my.mediaflow.host.com')
 mf.auth(username, apiKey) // Optional
 
 mf.search('foobar').then(function(data) {
-    console.loog('Got', data.total, 'search results', data.media)
+    console.log('Got', data.total, 'search results', data.media)
 })
 
 // Upload media in Node.js
