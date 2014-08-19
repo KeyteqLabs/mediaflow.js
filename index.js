@@ -65,7 +65,14 @@ Mediaflow.prototype.upload = function(file, options, callback) {
     var formData = new FormData()
     formData.append('file', file)
     for (var key in options) {
-        formData.append(key, options[key])
+        if (Array.isArray(options[key])) {
+            options[key].forEach(function(val) {
+                formData.append(key + '[]', val)
+            })
+        }
+        else {
+            formData.append(key, options[key])
+        }
     }
     var url = this.url('POST', '/media.json', options)
     var p = new Promise(function(resolve, reject) {

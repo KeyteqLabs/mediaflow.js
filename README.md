@@ -19,7 +19,8 @@ mf.search('foobar').then(function(data) {
 // When passing a readstream you also need to specify
 // a name of your file!
 var options = {
-    name: 'image.jpg'
+    name: 'image.jpg',
+    tags: ['foo', 'bar']
 }
 mf.upload(fs.createReadStream(filepath), options)
 .then(function(media) {
