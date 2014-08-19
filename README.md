@@ -1,4 +1,6 @@
 # Mediaflow.js
+[![NPM](https://nodei.co/npm/mediaflow.png?mini=true)](https://www.npmjs.org/package/mediaflow)
+
 [![Build Status](https://travis-ci.org/KeyteqLabs/mediaflow.js.svg?branch=master)](https://travis-ci.org/KeyteqLabs/mediaflow.js)
 
 Mediaflow Node + Browser JavaScript implementation
