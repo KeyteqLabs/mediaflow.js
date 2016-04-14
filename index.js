@@ -65,7 +65,12 @@ Mediaflow.prototype.upload = function(file, options, callback) {
     var formData = new FormData()
     formData.append('file', file)
     for (var key in options) {
-        if (Array.isArray(options[key])) {
+        if (key == 'attributes') {
+            for (var attrKey in options[key]) {
+                formData.append('attributes[' + attrKey + ']', options[key][attrKey])
+            }
+        }
+        else if (Array.isArray(options[key])) {
             options[key].forEach(function(val) {
                 formData.append(key + '[]', val)
             })
