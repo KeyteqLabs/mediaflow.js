@@ -98,4 +98,17 @@ Mediaflow.prototype.search = function(query, callback) {
     return nodeify(p, callback)
 }
 
+Mediaflow.prototype.findByTag = function(tag, callback)
+{
+    var url = this.url('GET', '/media.json', {tags : tag})
+    var p = new Promise(function(resolve, reject)
+    {
+        http.getJSON(url, function(err, data)
+        {
+            return err ? reject(err) : resolve(data)
+        })
+    })
+    return nodeify(p, callback)
+}
+
 module.exports = Mediaflow
